@@ -1,1 +1,1 @@
-web: gunicorn JeopardyFlask:app
+web: gunicorn --chdir JeopardyFlask __init__:app
