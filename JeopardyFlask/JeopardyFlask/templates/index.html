@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Jeopardy Trivia Search</h1>
+    <p class="lead">This Jeopardy Trivia Search has been developed by Aditi Panchal. The technologies used are Python, Flask, Bootstrap, jQuery and Date Range Picker component</p>
+</div>
+
+<form action="{{ url_for('handle_data') }}" method="post">
+    <label>Category:</label>
+    <select id="category" name="category" width="800px">
+        <option SELECTED value="0">Choose the Trivia Category</option>
+        {% for x,y in category_list %}
+        <option value='{{ x }}'>{{y}}</option>
+        {% endfor %}
+    </select>
+    <label>Amount:</label>
+    <select id="amount" name="amount" width="600px">
+        <option SELECTED value="0">Choose the Amount</option>
+        <option value=100>100</option>
+        <option value=200>200</option>
+        <option value=300>300</option>
+        <option value=400>400</option>
+        <option value=500>500</option>
+        <option value=600>600</option>
+        <option value=700>700</option>
+        <option value=800>800</option>
+        <option value=900>900</option>
+        <option value=1000>1000</option>
+    </select>
+    <input type="text" name="daterange" value="01/01/2000 - 11/01/2019" />
+
+    <script>
+        $(function () {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+    </script>
+    <input type="submit">
+</form>
+
+{{ trivia | safe}} 
+
+{% endblock %}
