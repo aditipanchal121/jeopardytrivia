@@ -1,1 +1,1 @@
-web: gunicorn JeopardyFlask/runserver.py
+web: gunicorn JeopardyFlask:app
