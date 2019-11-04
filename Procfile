@@ -1,1 +1,1 @@
-web: gunicorn jeopardytrivia.wsgi
+web: gunicorn JeopardyFlask/runserver.py
